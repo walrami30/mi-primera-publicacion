@@ -1,0 +1,54 @@
+DEPLOYMENT EXPLORER
+
+CÓMO ABRIR
+Abre index.html en un navegador moderno. No requiere instalación, compilación,
+cuentas, claves ni conexión a internet para usar el dashboard.
+Los enlaces a documentación oficial sí requieren conexión.
+
+CONTENIDO
+- Exploración de seis plataformas con búsqueda y filtros combinables.
+- Selección de hasta tres plataformas; quitar una conserva los filtros.
+- Comparación detallada y descarga de una matriz en CSV.
+- Barras de componentes integrados, mapa de once capacidades, perfiles de
+  crecimiento y tarjetas de costos, sincronizados con los filtros.
+- Detalles de cada plataforma, condiciones y 25 fuentes oficiales.
+- Asistente de tres preguntas con explicaciones y alternativas.
+- Sin recomendación automática si se indican datos sensibles o requisitos
+  empresariales de seguridad y auditoría.
+- Diseño responsive para móvil, tableta y escritorio; controles accesibles
+  por teclado, estados con texto y paneles de detalle.
+
+DATOS Y ACTUALIZACIÓN
+Se conserva íntegro el JSON suministrado en el documento, versión 1.0,
+verificado documentalmente el 18 de noviembre de 2026. Los precios están en USD.
+No se realizan consultas ni actualizaciones en tiempo real.
+
+Para actualizar datos, edita el bloque JSON con id="platform-data" dentro de
+index.html. Los enlaces están en el bloque JSON con id="official-sources".
+La matriz adicional de la sección 4 del documento está en la constante rows.
+Si cambian capacidades, actualiza esa matriz y los criterios buildMap, costMap,
+adminMap y growths cuando corresponda. No hace falta rehacer la interfaz.
+
+Los filtros de tipo de proyecto y nivel de gestión son orientativos, según
+los usos del documento. Las capacidades configurables, externas o dependientes
+del plan pueden aparecer como coincidencias; sus condiciones están visibles.
+Las respuestas del asistente son independientes de los filtros de exploración.
+
+VERIFICACIÓN REALIZADA
+- Sintaxis JavaScript comprobada con Node.
+- Igualdad del JSON incorporado con el JSON original.
+- Filtros, búsqueda, estado vacío y limpieza verificados en navegador.
+- Límite de tres seleccionadas y detalle de capacidades verificados.
+- Filtros compartidos: al elegir alcance global aparecen dos plataformas,
+  dos barras y dos tarjetas de precio.
+- Asistente: caso integrado y bloqueo por datos sensibles verificados.
+- Filtros móviles y detalle verificados; sin desbordamiento horizontal
+  de la página a 390, 768 y 1440 píxeles. Las tablas se desplazan dentro de su panel.
+- Seis tarjetas de precio y 25 fuentes oficiales incorporadas.
+- Sin errores ni advertencias de aplicación en la consola revisada.
+- La vista se probó con un servidor HTTP local. El navegador de revisión no
+  permite navegar al protocolo file:, por lo que esa apertura directa no se probó.
+
+ARCHIVOS
+index.html: aplicación completa, incluidos estilos, datos y JavaScript.
+LEEME.txt: instrucciones de uso y actualización.
