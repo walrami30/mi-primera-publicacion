@@ -1,0 +1,840 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Explora y compara seis plataformas para publicar tu próxima aplicación. Capacidades, costos y límites en un solo lugar.">
+<title>Deployment Explorer — Encuentra dónde publicar</title>
+<style>
+:root{color-scheme:dark;--bg:#111114;--panel:#17171b;--soft:#1d1d22;--line:#303038;--text:#f0f0f2;--muted:#adadb8;--cyan:#43e2df;--lime:#d0e470;--violet:#bba8ed;--amber:#efc47b;--red:#e89b91;font-family:Inter,"Segoe UI",Arial,sans-serif;font-synthesis:none}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-size:16px;line-height:1.55}button,input,select{font:inherit}button,a,input,select{ -webkit-tap-highlight-color:transparent}button{cursor:pointer}button,a{touch-action:manipulation}a{color:var(--cyan);text-underline-offset:4px}button{color:inherit;border:1px solid var(--line);background:transparent;border-radius:6px;padding:10px 16px;transition:background .15s,border-color .15s}button:hover{background:#26262d;border-color:#666674}button:disabled{opacity:.45;cursor:not-allowed}button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{outline:2px solid var(--cyan);outline-offset:4px}.primary{background:var(--cyan);color:#092422;border-color:var(--cyan);font-weight:600}.primary:hover{background:#83efeb;border-color:#83efeb}.quiet{border-color:transparent;color:var(--muted)}.tiny{font-size:.875rem}.mono,.eyebrow{font-family:"Cascadia Code",Consolas,monospace}.eyebrow{font-size:.8125rem;letter-spacing:.12em;text-transform:uppercase;color:var(--cyan)}.muted{color:var(--muted)}h1,h2,h3,p{margin:0}h1{font-size:clamp(2.15rem,3.5vw,3.7rem);font-weight:400;line-height:1.12;letter-spacing:-.045em}h2{font-size:1.65rem;font-weight:400;letter-spacing:-.035em}h3{font-size:1.2rem;font-weight:500;letter-spacing:-.02em}.header{position:sticky;top:0;z-index:8;background:#111114f5;backdrop-filter:blur(14px);min-height:84px;border-bottom:1px solid var(--line);display:flex;align-items:center;padding:0 40px;gap:40px}.brand{display:flex;align-items:center;gap:12px;font-weight:600;line-height:1.15;letter-spacing:-.035em;font-size:1.14rem;white-space:nowrap}.brand svg{width:30px;height:30px;color:var(--cyan)}.brand small{display:block;font-size:.7rem;letter-spacing:.22em;color:var(--muted);margin-top:5px;font-weight:400}.nav{display:flex;align-self:stretch;gap:24px;flex:1}.nav button{position:relative;border:0;border-radius:0;padding:0 4px;color:var(--muted);font-size:.925rem;white-space:nowrap}.nav button[aria-current=page]{color:var(--text);background:linear-gradient(0deg,#43e2df0d,transparent)}.nav button[aria-current=page]:after{content:"";height:2px;position:absolute;bottom:0;left:0;right:0;background:var(--cyan)}.version{font-size:.8rem;color:var(--muted);border:1px solid var(--line);padding:5px 10px;border-radius:4px;white-space:nowrap}.layout{display:grid;grid-template-columns:270px minmax(0,1fr);min-height:calc(100vh - 84px)}aside{border-right:1px solid var(--line);padding:30px 25px;align-self:start}.aside-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:25px}.aside-top h2{font-size:1.1rem}.aside-top button{padding:3px;font-size:.8rem;color:var(--cyan)}.field{display:block;margin-bottom:22px}.field>span,.field>label{display:block;font-size:.875rem;color:#d8d8df;margin-bottom:8px}.input-wrap{position:relative}.input-wrap svg{position:absolute;width:17px;top:13px;left:12px;color:var(--muted)}input[type=search]{width:100%;padding:11px 10px 11px 37px;border:1px solid var(--line);border-radius:5px;background:#101013;color:var(--text);font-size:.875rem}select{width:100%;padding:10px 29px 10px 10px;background:#19191e;border:1px solid var(--line);border-radius:5px;color:var(--text);font-size:.875rem;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' stroke='%23aaaab5'%3E%3Cpath d='m4 6 4 4 4-4'/%3E%3C/svg%3E");background-position:right 8px center;background-repeat:no-repeat}fieldset{border:0;padding:0;margin:0 0 24px}legend{font-size:.875rem;margin-bottom:10px}label.check{display:flex;gap:10px;align-items:start;font-size:.875rem;color:var(--muted);margin:10px 0;cursor:pointer}input[type=checkbox]{accent-color:var(--cyan);width:16px;height:16px;flex-shrink:0;margin:3px 0}.filter-note{font-size:.8rem;color:var(--muted);border-top:1px solid var(--line);padding-top:18px}.main{padding:34px 38px 70px;max-width:1600px;width:100%;margin:auto}.hero{display:flex;justify-content:space-between;gap:32px;padding-bottom:30px;border-bottom:1px solid var(--line);margin-bottom:28px}.hero-copy{max-width:680px}.hero h1{margin:12px 0 17px}.hero p{max-width:570px;color:var(--muted)}.hero-art{width:200px;min-width:145px;align-self:center;position:relative}.hero-art svg{display:block;width:100%;height:auto}.hero-art:before{content:"";position:absolute;inset:20%;background:#25cfcd1c;filter:blur(30px);border-radius:50%}.stats{display:flex;gap:25px;margin-top:24px;font-size:.8125rem;color:var(--muted);flex-wrap:wrap}.stats b{font-family:Consolas,monospace;color:var(--text);font-size:1rem;font-weight:400;margin-right:6px}.section-top{display:flex;gap:18px;align-items:center;justify-content:space-between;margin:26px 0 18px}.section-top>div{display:flex;gap:14px;align-items:center}.count{font-family:Consolas,monospace;font-size:.8125rem;background:#23232a;border:1px solid var(--line);padding:2px 8px;border-radius:4px;color:var(--muted)}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px}.card{position:relative;display:flex;flex-direction:column;padding:22px;background:linear-gradient(140deg,#1a1a20,#151518);border:1px solid var(--line);border-radius:7px;min-width:0}.card.selected{border-color:#399e9e;background:linear-gradient(145deg,#1a292c,#151518 70%)}.card-head{display:flex;gap:12px;align-items:center;margin-bottom:17px}.logo{width:39px;height:39px;border:1px solid #4b4b58;background:#25252d;display:grid;place-items:center;border-radius:9px;font-size:1.15rem;font-weight:600;flex-shrink:0}.logo svg{width:25px;height:25px}.logo.sites{color:var(--cyan);background:#143234;border-color:#235052}.logo.lovable{color:#ffb7d1;background:linear-gradient(135deg,#4a223f,#302648)}.logo.render{color:#c7b6ff;background:#2c2541}.logo.cloudflare{color:#ffc991;background:#3a2b20}.card-head h3{font-size:1.12rem}.category{font-size:.8rem;color:var(--muted)}.card p{font-size:.875rem;color:var(--muted);min-height:65px}.card .tags{display:flex;gap:6px;flex-wrap:wrap;margin:17px 0}.tag{font-size:.75rem;color:#c6c6ce;border:1px solid #35353f;padding:3px 7px;border-radius:4px}.card-data{border-top:1px solid var(--line);padding:13px 0;display:grid;gap:8px;margin-top:auto}.data-row{display:flex;gap:8px;justify-content:space-between;flex-wrap:wrap;font-size:.875rem}.data-row>span:first-child{color:var(--muted)}.status{display:inline-flex;align-items:center;gap:6px;font-size:.875rem;white-space:nowrap}.status:before{content:"";width:5px;height:5px;display:inline-block;background:currentColor;flex-shrink:0;border-radius:50%}.included{color:var(--cyan)}.configurable{color:var(--violet)}.external{color:var(--amber)}.limited{color:#bec0cc}.not_native{color:var(--red)}.conditional{color:var(--lime)}.card-actions{display:flex;justify-content:space-between;align-items:center;gap:8px;margin:7px -2px -4px}.card-actions button{font-size:.8125rem;padding:7px 10px}.card-actions .select{border-color:#42424e;white-space:nowrap}.card.selected .select{color:var(--cyan);border-color:#317c7d}.helper-banner{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:21px 24px;margin-top:24px;border:1px solid #355353;border-radius:6px;background:linear-gradient(110deg,#17303270,#151518)}.helper-banner p{font-size:.875rem;color:var(--muted);margin-top:4px}.helper-banner h3{font-size:1.05rem}.helper-banner button{white-space:nowrap;font-size:.875rem}.caption{font-size:.8125rem;color:var(--muted);line-height:1.6}.section-desc{color:var(--muted);font-size:.875rem;margin:6px 0 23px}.panel{border:1px solid var(--line);border-radius:7px;padding:24px;margin-top:22px;background:#151519}.panel-header{display:flex;justify-content:space-between;align-items:start;gap:16px;margin-bottom:22px}.panel-header h3{margin-bottom:5px}.legend{display:flex;gap:15px;flex-wrap:wrap;font-size:.75rem;color:var(--muted);margin:18px 0}.swatch{display:inline-block;width:8px;height:8px;background:var(--cyan);margin-right:6px}.bar-row{display:grid;grid-template-columns:142px 1fr 38px;gap:18px;align-items:center;margin:18px 0;font-size:.875rem}.bar-name{border:0;text-align:left;padding:2px 0;font-size:.875rem}.bar{height:24px;display:flex;gap:3px}.segment{padding:0;border:0;border-radius:2px;min-width:0;color:#111;position:relative;font-family:Consolas,monospace;font-size:.8rem}.segment:hover{filter:brightness(1.2)}.table-wrap{overflow:auto;margin:0 -6px}table{border-collapse:collapse;width:100%;text-align:left;font-size:.875rem}th,td{border-bottom:1px solid var(--line);padding:16px 12px;vertical-align:top}th{font-weight:500;color:#d7d7df}th:first-child{min-width:175px}td{min-width:155px}thead th{color:var(--text)}td button.cell{border:0;padding:4px 0;text-align:left;display:block;width:100%}td button.cell:hover{background:#292930}.table-detail{font-size:.8rem;color:var(--muted);margin-top:6px;max-width:290px}.selection-box{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:15px 0}.selection-box button{font-size:.8125rem;padding:6px 10px}.selection-box .active{border-color:#3b8e8d;color:var(--cyan);background:#183233}.empty{text-align:center;border:1px dashed var(--line);padding:60px 20px;border-radius:6px;color:var(--muted)}.empty h3{color:var(--text);margin-bottom:8px}.empty button{margin-top:20px}.growth-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.growth{border:1px solid var(--line);border-radius:5px;padding:20px}.growth h3{font-size:1rem;margin-bottom:12px}.growth button{font-size:.8125rem;padding:5px 8px;margin:3px 3px 3px 0}.growth p{font-size:.8125rem;color:var(--muted);margin-top:10px}.price-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.price-card{padding:22px;border:1px solid var(--line);border-radius:5px;min-width:0}.price-card h3{margin-bottom:12px}.price-card p{font-size:.875rem;margin-bottom:14px}.price-card dt{font-size:.75rem;color:var(--cyan);text-transform:uppercase;letter-spacing:.07em;margin-top:14px}.price-card dd{margin:5px 0;font-size:.875rem;color:var(--muted)}details{border-bottom:1px solid var(--line);padding:17px 0}summary{cursor:pointer;color:#dedee5}details p,details li{color:var(--muted);font-size:.875rem;margin-top:8px}.source-links{display:grid;gap:8px;margin-top:15px;font-size:.875rem}.warning{border:1px solid #665437;border-left:3px solid var(--amber);padding:18px 20px;background:#342a1938;color:#efcea0;font-size:.875rem;border-radius:4px;margin:20px 0}.wizard{max-width:760px;margin:22px auto}.steps{display:flex;gap:7px;margin:26px 0}.steps span{height:3px;background:var(--line);flex:1}.steps .done{background:var(--cyan)}.wizard h2{margin:12px 0 24px;font-size:1.8rem}.options{display:grid;gap:12px}.option{padding:18px;text-align:left;background:#1a1a20;border-color:#3b3b46;font-size:1rem}.option:before{content:"";display:inline-block;width:13px;height:13px;border:1px solid #71717f;border-radius:50%;margin-right:14px}.option[aria-pressed=true]{border-color:var(--cyan);background:#183030}.option[aria-pressed=true]:before{background:var(--cyan);border-color:var(--cyan)}.wizard-footer{display:flex;justify-content:space-between;margin-top:24px}.wizard .check{border-top:1px solid var(--line);padding-top:19px;margin-top:20px}.result-card{border:1px solid #3c7878;background:#17313160;border-radius:7px;padding:24px;margin:20px 0}.result-card h3{font-size:1.4rem;margin-bottom:10px}.result-card p{font-size:.9375rem;color:var(--muted);margin-bottom:18px}.result-alt{margin:20px 0}.compare-dock{position:fixed;z-index:5;bottom:20px;left:calc(50% + 135px);transform:translateX(-50%);display:flex;gap:14px;align-items:center;max-width:calc(100vw - 330px);padding:12px 16px;background:#23242cee;border:1px solid #4c696c;border-radius:8px;box-shadow:0 12px 45px #0008;backdrop-filter:blur(15px)}.dock-title{font-size:.8125rem;color:var(--muted);white-space:nowrap}.dock-list{display:flex;gap:8px}.dock-list button{font-size:.75rem;padding:5px 8px;white-space:nowrap}.compare-dock>.primary{font-size:.875rem;white-space:nowrap}.footer{display:flex;justify-content:space-between;gap:16px;margin-top:38px;padding-top:22px;border-top:1px solid var(--line);font-size:.75rem;color:var(--muted)}dialog{background:#18181e;color:var(--text);border:1px solid #4a4a57;border-radius:10px;padding:0;max-width:730px;width:calc(100% - 30px);max-height:90vh}dialog::backdrop{background:#050509b8;backdrop-filter:blur(4px)}.dialog-head{position:sticky;top:0;z-index:1;background:#18181ef5;padding:20px 26px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:15px;align-items:center}.dialog-head button{padding:5px 12px}.dialog-body{padding:24px 26px}.dialog-body h3{margin:22px 0 8px}.dialog-body p,.dialog-body li{font-size:.9375rem;color:var(--muted)}.dialog-body .status{font-size:.875rem;margin:8px 0}.dialog-body ul{padding-left:20px}.toast{position:fixed;bottom:100px;left:50%;transform:translateX(-50%);background:#38353e;border:1px solid #77717e;border-radius:6px;padding:12px 22px;z-index:20;max-width:90vw;font-size:.875rem}.mobile-filter,.mobile-close{display:none}#view-title,#filters{scroll-margin-top:115px}.visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}[hidden]{display:none!important}.tip{padding:12px 16px;background:#24242b;border:1px solid #44444f;border-radius:5px;margin-top:12px;font-size:.875rem}.export{padding:5px 8px;font-size:.8rem}
+@media(min-width:1600px){.main{padding-left:52px;padding-right:52px}.hero-art{width:240px}}
+@media(max-width:1180px){.header{padding:0 24px;gap:28px}.nav{gap:14px}.version{display:none}.layout{grid-template-columns:235px minmax(0,1fr)}aside{padding:25px 18px}.main{padding:28px 25px 90px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.hero-art{width:165px;min-width:130px}.compare-dock{left:calc(50% + 117px);max-width:calc(100vw - 270px)}.dock-title{display:none}}
+@media(max-width:800px){.header{padding:18px 20px 0;display:block}.brand{margin-bottom:16px}.brand small{display:none}.brand svg{width:25px;height:25px}.nav{gap:22px;overflow:auto;height:47px}.nav button{font-size:.875rem}.layout{display:block}aside{display:none;border-right:0;border-bottom:1px solid var(--line);padding:22px;grid-template-columns:1fr 1fr;gap:0 20px}aside.open{display:grid}.aside-top{grid-column:1/-1}.filter-note{grid-column:1/-1}.main{padding:25px 20px 100px}.mobile-close{display:inline-block}.mobile-filter{display:inline-block;font-size:.875rem;padding:6px 12px}.hero{gap:15px}.hero-art{width:135px;min-width:110px}.hero p{font-size:.9375rem}.stats{gap:14px}.compare-dock{left:50%;max-width:calc(100vw - 24px);width:max-content;gap:10px;bottom:12px;padding:10px}.dock-list{gap:4px;flex-wrap:wrap}.dock-list button{max-width:120px;overflow:hidden;text-overflow:ellipsis}.compare-dock>.primary{padding:8px 12px}.section-top h2{font-size:1.4rem}.bar-row{grid-template-columns:110px 1fr 28px;gap:10px}.growth-grid,.price-grid{grid-template-columns:1fr}.footer{flex-direction:column;gap:4px}}
+@media(max-width:480px){.nav{gap:18px}.nav button{font-size:.8125rem}.grid{grid-template-columns:1fr}.hero-art{display:none}.hero{padding-bottom:24px}.hero h1{max-width:330px}.hero .stats{font-size:.75rem}.helper-banner{align-items:start;flex-direction:column}.panel{padding:18px 15px}.panel-header{flex-direction:column}.section-top{gap:10px}.section-top>div{gap:8px}.count{font-size:.75rem}.card p{min-height:0}.card{padding:22px}.card-head{margin-bottom:14px}aside.open{display:block}.bar-row{grid-template-columns:95px 1fr 22px}.dock-list{max-width:195px}.dock-list button{font-size:.7rem;max-width:95px}.wizard h2{font-size:1.5rem}.footer{margin-bottom:30px}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+</style>
+</head>
+<body>
+<header class="header"><div class="brand"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="m16 2 13 7v14l-13 7L3 23V9Z M3 9l13 8 13-8M16 17v13M9 5l14 8v9"/></svg><div>deployment<span style="font-weight:300"> explorer</span><small>ENCUENTRA DÓNDE PUBLICAR</small></div></div><nav class="nav" aria-label="Navegación principal"><button data-view="explore" aria-current="page">Explorar</button><button data-view="compare">Comparar</button><button data-view="wizard">Encontrar mi plataforma</button><button data-view="sources">Fuentes y límites</button></nav><span class="version mono">EDICIÓN 1.0</span></header>
+<div class="layout"><aside id="filters" aria-label="Filtros de plataformas"><div class="aside-top"><h2>Afina tu búsqueda</h2><div><button id="clear">Limpiar filtros</button><button class="mobile-close" id="close-filters">Cerrar</button></div></div><label class="field"><span>Buscar plataforma</span><div class="input-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="10" cy="10" r="6.5"/><path d="m15 15 5 5"/></svg><input id="search" type="search" placeholder="Nombre o solución…"></div></label><label class="field"><span>¿Qué quiero construir?</span><select id="build"><option value="">Cualquier proyecto</option><option value="page">Página o micrositio</option><option value="light">Herramienta ligera</option><option value="internal">Aplicación interna</option><option value="data">Aplicación con usuarios y datos</option><option value="saas">Producto SaaS</option><option value="global">Alto tráfico o alcance global</option></select></label><fieldset id="needs"><legend>¿Qué necesito que haga?</legend></fieldset><label class="field"><span>Modelo de costo</span><select id="cost"><option value="">Todos los modelos</option><option value="free">Empezar gratis</option><option value="subscription">Suscripción mensual</option><option value="usage">Pago según consumo</option><option value="enterprise">Plan empresarial</option></select></label><label class="field"><span>¿Qué quiero administrar?</span><select id="admin"><option value="">Cualquier nivel de gestión</option><option value="minimal">Lo mínimo posible</option><option value="some">Algunos servicios por separado</option><option value="control">Todos los componentes con mayor control</option></select></label><div class="filter-note">Los filtros incluyen opciones que requieren configuración o un plan específico. Revisa los estados de cada capacidad.<details><summary>Cómo funcionan los filtros</summary><p>Las capacidades excluyen «No incluido». Los tipos de proyecto y la gestión son orientativos, según los usos y límites del documento. «Empezar gratis» incluye pruebas y planes con restricciones; no implica uso comercial gratuito. Los filtros se combinan.</p></details></div></aside>
+<main class="main" id="main"><section class="hero"><div class="hero-copy"><div class="eyebrow">Una decisión informada, desde el inicio</div><h1>Tu próxima aplicación.<br><span style="color:var(--cyan)">El lugar adecuado.</span></h1><p>Compara qué ofrece cada plataforma, qué necesitas conectar y qué debes revisar antes de publicar.</p><div class="stats"><span><b>06</b> plataformas</span><span><b>11</b> capacidades</span><span>Datos verificados · <b style="font-size:.8125rem">18 nov 2026</b></span></div></div><div class="hero-art" aria-hidden="true"><svg id="orb" viewBox="0 0 230 205"></svg></div></section>
+<div class="section-top"><div><h2 id="view-title">Explora las plataformas</h2><span id="result-count" class="count" role="status" aria-live="polite">6 de 6</span></div><button id="filter-toggle" class="mobile-filter" aria-expanded="false" aria-controls="filters">Filtros</button></div><div id="view"></div><footer class="footer"><span>Deployment Explorer · Comparación cualitativa, sin puntuaciones.</span><span>Fuente: documento proporcionado · v1.0 · USD</span></footer></main></div>
+<div id="dock" class="compare-dock" hidden><span class="dock-title">Tu selección <b id="selected-count">0/3</b></span><div id="dock-list" class="dock-list"></div><button class="primary" data-view="compare" id="compare-go">Comparar</button></div>
+<dialog id="detail"><div class="dialog-head"><h2 id="dialog-title"></h2><button id="close-dialog" aria-label="Cerrar detalle">Cerrar</button></div><div class="dialog-body" id="dialog-body"></div></dialog><div class="toast" id="toast" role="status" hidden></div>
+<script id="platform-data" type="application/json">{
+  "metadata": {
+    "title": "Deployment Explorer",
+    "version": "1.0",
+    "verified_on": "2026-11-18",
+    "currency": "USD",
+    "language": "es",
+    "audience": "Directivos y trabajadores del conocimiento",
+    "methodology": "Comparacion cualitativa basada en documentacion oficial. No representa una prueba de rendimiento ni una auditoria de seguridad.",
+    "platform_count": 6
+  },
+  "status_legend": {
+    "included": {
+      "label": "Incluido",
+      "description": "La plataforma ofrece esta capacidad en su propio entorno."
+    },
+    "configurable": {
+      "label": "Configurable",
+      "description": "Se puede conseguir con configuracion o conectando otro servicio."
+    },
+    "external": {
+      "label": "Servicio externo",
+      "description": "Normalmente requiere un proveedor o componente independiente."
+    },
+    "limited": {
+      "label": "Con limites",
+      "description": "Existe, pero tiene limites de uso, compatibilidad o alcance."
+    },
+    "not_native": {
+      "label": "No incluido",
+      "description": "No es una capacidad propia de la plataforma."
+    },
+    "conditional": {
+      "label": "Depende del plan",
+      "description": "La disponibilidad depende del plan, cuenta, region o habilitacion."
+    }
+  },
+  "platforms": [
+    {
+      "id": "chatgpt_sites",
+      "name": "ChatGPT Sites",
+      "short_name": "Sites",
+      "category": "Crear y publicar",
+      "purpose": "Crear, revisar, publicar y compartir sitios web interactivos y aplicaciones ligeras desde ChatGPT.",
+      "default_address": "URL generada por ChatGPT Sites",
+      "custom_domain": {
+        "status": "conditional",
+        "label": "Disponible donde la funcion este habilitada",
+        "detail": "El propietario debe tener un dominio y poder modificar sus registros DNS."
+      },
+      "ideal_for": [
+        "Dashboards de consulta",
+        "Buscadores de documentos",
+        "Herramientas internas ligeras",
+        "Centros de recursos",
+        "Prototipos interactivos"
+      ],
+      "not_ideal_for": [
+        "Aplicaciones que necesitan cualquier framework o servicio sin restricciones",
+        "Sistemas con procesos de fondo no compatibles",
+        "Aplicaciones que procesen datos especialmente sensibles sin una revision previa"
+      ],
+      "scale": {
+        "label": "Aplicaciones ligeras",
+        "detail": "Puede alojar aplicaciones interactivas con datos y archivos. La capacidad depende de las cuotas, el entorno compatible y las funciones disponibles.",
+        "documented_limits": [
+          "La base de datos de cada Site admite hasta 10 GB.",
+          "El uso de ejecucion, alojamiento, trafico y almacenamiento esta sujeto a limites compartidos.",
+          "Algunos frameworks, redes privadas, bases de datos y servicios en segundo plano pueden no ser compatibles."
+        ]
+      },
+      "access_control": {
+        "status": "included",
+        "label": "Privado por defecto",
+        "detail": "Se puede compartir con personas seleccionadas, grupos, el espacio de trabajo o el publico cuando la configuracion lo permite. En Enterprise, la publicacion publica esta desactivada por defecto y requiere habilitacion administrativa.",
+        "application_login_note": "El acceso al Site y el inicio de sesion dentro de la aplicacion son controles distintos. Revisar ambos."
+      },
+      "security": {
+        "status": "limited",
+        "label": "Controles de acceso del entorno",
+        "detail": "Incluye opciones de privacidad y permisos para compartir. Las aplicaciones conectadas utilizan los permisos propios de cada visitante.",
+        "caution": "No asumir que sustituye una arquitectura de seguridad empresarial. Revisar los datos permitidos, el entorno y las politicas del espacio de trabajo."
+      },
+      "backend_components": {
+        "database": {
+          "status": "included",
+          "label": "Base de datos incluida",
+          "detail": "Hasta 10 GB por Site."
+        },
+        "user_accounts": {
+          "status": "limited",
+          "label": "Acceso y autenticacion compatibles",
+          "detail": "Incluye controles de acceso al Site y funciones de inicio de sesion compatibles con el entorno. No asumir que equivale a cualquier sistema empresarial de identidad."
+        },
+        "file_storage": {
+          "status": "included",
+          "label": "Almacenamiento de archivos",
+          "detail": "Disponible con limites de uso y almacenamiento compartidos."
+        },
+        "background_work": {
+          "status": "limited",
+          "label": "Procesos adicionales segun compatibilidad",
+          "detail": "Algunos servicios en segundo plano no son compatibles. Los tuneles a servicios privados estan disponibles para espacios de trabajo elegibles."
+        }
+      },
+      "activity_records": {
+        "status": "limited",
+        "label": "Datos operativos del Site",
+        "detail": "Puede incluir registros y datos operativos para alojar, proteger y depurar. No asumir que es una auditoria de negocio completa."
+      },
+      "code_and_portability": {
+        "status": "configurable",
+        "label": "Codigo exportable con Codex",
+        "detail": "Se puede pedir a Codex que exporte el codigo. La base de datos y los archivos cargados no se respaldan juntos con el codigo; hay que tratarlos por separado."
+      },
+      "technology_flexibility": {
+        "label": "Entorno compatible con Sites",
+        "detail": "Permite aplicaciones web ligeras, pero algunos frameworks, servicios, bases de datos y patrones de alojamiento pueden no estar admitidos."
+      },
+      "publishing": {
+        "label": "Crear, revisar y publicar desde ChatGPT",
+        "detail": "Los nuevos Sites son privados por defecto. Se revisa una vista previa antes de publicar y se elige la audiencia."
+      },
+      "pricing": {
+        "entry": "Incluido en planes elegibles de ChatGPT Plus, Pro, Business y Enterprise.",
+        "model": "El uso de Codex para crear o editar se contabiliza segun el plan. El uso de ejecucion, alojamiento, trafico y almacenamiento se contabiliza por separado y esta sujeto a limites.",
+        "enterprise_note": "Actualmente, el alojamiento de Sites en espacios Enterprise esta exento de cargos; los limites de uso y almacenamiento siguen aplicando.",
+        "commercial_note": "Revisar permisos del espacio de trabajo, politicas internas y condiciones de uso antes de publicar."
+      },
+      "fit_tags": [
+        "dashboard",
+        "documentos",
+        "herramienta_ligera",
+        "aplicacion_interna",
+        "chatgpt",
+        "sin_backend_complejo"
+      ],
+      "source_ids": [
+        "openai_sites",
+        "openai_sites_workspace",
+        "openai_sites_responsibilities"
+      ]
+    },
+    {
+      "id": "lovable",
+      "name": "Lovable",
+      "short_name": "Lovable",
+      "category": "Crear aplicaciones",
+      "purpose": "Construir, alojar y publicar aplicaciones web completas mediante instrucciones en lenguaje natural.",
+      "default_address": "*.lovable.app",
+      "custom_domain": {
+        "status": "conditional",
+        "label": "Disponible en planes de pago",
+        "detail": "Se puede comprar un dominio desde Lovable o conectar uno existente."
+      },
+      "ideal_for": [
+        "Portales internos",
+        "Sistemas de reservas",
+        "CRM y herramientas comerciales",
+        "LMS y centros de aprendizaje",
+        "Aplicaciones con usuarios, datos y archivos",
+        "Productos SaaS que empiezan con una arquitectura integrada"
+      ],
+      "not_ideal_for": [
+        "Proyectos que requieren libertad total sobre cualquier tecnologia o infraestructura",
+        "Equipos que necesitan administrar cada componente en proveedores separados desde el primer dia"
+      ],
+      "scale": {
+        "label": "Aplicaciones de produccion",
+        "detail": "El alojamiento escala con el trafico. Se puede ajustar el tamano de la instancia y el almacenamiento de la base de datos.",
+        "documented_limits": [
+          "El crecimiento depende de la arquitectura, la configuracion de la base de datos y los creditos o recursos contratados.",
+          "El uso de Cloud y de funciones de IA puede generar consumo adicional."
+        ]
+      },
+      "access_control": {
+        "status": "conditional",
+        "label": "Usuarios, roles y permisos",
+        "detail": "Pro incluye roles y permisos. Business agrega publicacion restringida a miembros del espacio de trabajo y SSO. Enterprise agrega controles organizacionales avanzados."
+      },
+      "security": {
+        "status": "conditional",
+        "label": "Controles segun el plan",
+        "detail": "Business incluye Security Center y SSO. Enterprise agrega registros de auditoria, SCIM, controles de datos sensibles y analisis de seguridad programados.",
+        "caution": "Las comprobaciones automatizadas de seguridad no equivalen por si solas a una auditoria integral de la aplicacion."
+      },
+      "backend_components": {
+        "database": {
+          "status": "included",
+          "label": "Base de datos integrada",
+          "detail": "Backend administrado basado en la tecnologia abierta de Supabase."
+        },
+        "user_accounts": {
+          "status": "included",
+          "label": "Registro e inicio de sesion",
+          "detail": "Autenticacion y administracion de usuarios integradas."
+        },
+        "file_storage": {
+          "status": "included",
+          "label": "Archivos integrados",
+          "detail": "Almacenamiento de documentos, imagenes y otros archivos."
+        },
+        "background_work": {
+          "status": "included",
+          "label": "Funciones y tareas",
+          "detail": "Funciones de servidor, webhooks y tareas programadas."
+        }
+      },
+      "activity_records": {
+        "status": "conditional",
+        "label": "Registros tecnicos y auditoria segun plan",
+        "detail": "Incluye logs del backend. Los registros de auditoria organizacional son una funcion Enterprise."
+      },
+      "code_and_portability": {
+        "status": "included",
+        "label": "Codigo propio y sincronizacion con GitHub",
+        "detail": "El usuario es propietario del codigo. La sincronizacion con GitHub es bidireccional. La descarga directa del codigo esta disponible en planes de pago."
+      },
+      "technology_flexibility": {
+        "label": "Stack web guiado",
+        "detail": "Lovable genera una arquitectura web definida. El codigo puede exportarse y continuarse fuera de Lovable, pero la plataforma no es un alojamiento universal para cualquier tipo de software."
+      },
+      "publishing": {
+        "label": "Publicar desde Lovable",
+        "detail": "Lovable aloja la aplicacion y su backend integrado. Los cambios se pueden sincronizar con GitHub."
+      },
+      "pricing": {
+        "entry": "Free: US$0. Pro: US$25/mes. Business: US$50/mes. Enterprise: precio a medida.",
+        "model": "Los planes incluyen creditos para construir y usar Cloud. El uso de alojamiento y funciones de IA consume creditos; aplicaciones con trafico o volumen significativo pueden requerir creditos adicionales.",
+        "commercial_note": "Revisar el plan, el consumo de Cloud, las funciones empresariales y los requisitos de la organizacion."
+      },
+      "fit_tags": [
+        "aplicacion_interna",
+        "usuarios",
+        "base_de_datos",
+        "archivos",
+        "crm",
+        "reservas",
+        "saas",
+        "construccion_ia"
+      ],
+      "source_ids": [
+        "lovable_backend",
+        "lovable_github",
+        "lovable_domains",
+        "lovable_pricing"
+      ]
+    },
+    {
+      "id": "vercel",
+      "name": "Vercel",
+      "short_name": "Vercel",
+      "category": "Publicar y operar",
+      "purpose": "Publicar aplicaciones creadas con diferentes herramientas y mantener un flujo organizado de actualizaciones.",
+      "default_address": "*.vercel.app",
+      "custom_domain": {
+        "status": "included",
+        "label": "Si",
+        "detail": "Permite conectar dominios propios. El plan Pro incluye dominio personalizado."
+      },
+      "ideal_for": [
+        "Aplicaciones creadas con Codex, Lovable u otras herramientas",
+        "Productos web y SaaS",
+        "Aplicaciones con alto trafico",
+        "Equipos que trabajan con GitHub y revisan cambios antes de publicar",
+        "Proyectos que requieren libertad para elegir servicios y tecnologias"
+      ],
+      "not_ideal_for": [
+        "Equipos que esperan que la plataforma incluya automaticamente una base de datos empresarial y toda la gestion de usuarios",
+        "Proyectos comerciales alojados en el plan Hobby"
+      ],
+      "scale": {
+        "label": "Aplicaciones web de alto trafico",
+        "detail": "Ofrece red global, distribucion de contenido y funciones que pueden crecer con la demanda. El resultado depende de la arquitectura, los limites del plan y el consumo.",
+        "documented_limits": [
+          "El plan Hobby tiene limites de uso y es para proyectos personales y no comerciales.",
+          "El plan Pro incluye creditos de uso; el consumo adicional se factura segun los recursos utilizados.",
+          "Las garantias y capacidades empresariales avanzadas dependen del plan Enterprise."
+        ]
+      },
+      "access_control": {
+        "status": "configurable",
+        "label": "Proteccion del sitio y de las versiones de prueba",
+        "detail": "Vercel Authentication puede restringir despliegues de prueba. Pro y Enterprise permiten proteger tambien los dominios de produccion. El inicio de sesion y los permisos de los usuarios de la aplicacion se implementan por separado."
+      },
+      "security": {
+        "status": "included",
+        "label": "Proteccion de infraestructura",
+        "detail": "Incluye mitigacion DDoS y firewall. Permite reglas de proteccion y observabilidad. Funciones de gobierno como SSO, SCIM y auditoria avanzada dependen del plan.",
+        "caution": "El firewall de la plataforma no sustituye la autenticacion, autorizacion por roles ni validacion de datos dentro de la aplicacion."
+      },
+      "backend_components": {
+        "database": {
+          "status": "external",
+          "label": "Conectar una base de datos",
+          "detail": "Se conecta con proveedores de bases de datos y servicios disponibles en el ecosistema de integraciones."
+        },
+        "user_accounts": {
+          "status": "external",
+          "label": "Conectar autenticacion",
+          "detail": "Normalmente se utiliza un proveedor de identidad o autenticacion independiente."
+        },
+        "file_storage": {
+          "status": "configurable",
+          "label": "Almacenamiento propio o conectado",
+          "detail": "Puede utilizar Vercel Blob o servicios externos."
+        },
+        "background_work": {
+          "status": "configurable",
+          "label": "Funciones y servicios adicionales",
+          "detail": "Ofrece funciones de servidor; procesos duraderos o flujos complejos pueden requerir productos o servicios adicionales."
+        }
+      },
+      "activity_records": {
+        "status": "conditional",
+        "label": "Registros tecnicos y observabilidad",
+        "detail": "Incluye logs y herramientas de observabilidad. Los registros de auditoria organizacional y algunas capacidades de gobierno dependen del plan."
+      },
+      "code_and_portability": {
+        "status": "included",
+        "label": "Codigo en repositorio propio",
+        "detail": "Vercel despliega desde GitHub u otros flujos compatibles. El codigo permanece en el repositorio del equipo."
+      },
+      "technology_flexibility": {
+        "label": "Amplia compatibilidad web",
+        "detail": "Admite numerosos frameworks web y funciones de servidor. No significa que pueda ejecutar cualquier tipo de programa o servidor sin restricciones."
+      },
+      "publishing": {
+        "label": "Publicacion automatica desde Git",
+        "detail": "Al actualizar el repositorio se puede generar una nueva version. Tambien crea versiones de prueba para ramas y cambios en revision."
+      },
+      "pricing": {
+        "entry": "Hobby: US$0, solo personal y no comercial. Pro: desde US$20/mes, con US$20 de credito de uso incluido. Enterprise: precio a medida.",
+        "model": "El uso por encima de los recursos incluidos puede generar cargos adicionales. Revisar consumo, miembros y limites antes de usarlo en produccion.",
+        "commercial_note": "No usar Hobby para aplicaciones comerciales o de la organizacion. Evaluar Pro o Enterprise y las politicas de TI."
+      },
+      "fit_tags": [
+        "saas",
+        "aplicacion_empresarial",
+        "alto_trafico",
+        "github",
+        "codex",
+        "control_tecnologico",
+        "dominio",
+        "previsualizaciones"
+      ],
+      "source_ids": [
+        "vercel_pricing",
+        "vercel_deployment_protection",
+        "vercel_firewall",
+        "vercel_domains",
+        "vercel_plans"
+      ]
+    },
+    {
+      "id": "github_pages",
+      "name": "GitHub Pages",
+      "short_name": "GitHub Pages",
+      "category": "Publicar paginas",
+      "purpose": "Publicar paginas web directamente desde un repositorio de GitHub.",
+      "default_address": "*.github.io",
+      "custom_domain": {
+        "status": "included",
+        "label": "Si",
+        "detail": "Permite utilizar un dominio propio."
+      },
+      "ideal_for": [
+        "Paginas informativas",
+        "Portafolios",
+        "Manuales y documentacion",
+        "Landing pages",
+        "Demostraciones que funcionan en el navegador"
+      ],
+      "not_ideal_for": [
+        "Aplicaciones que necesitan guardar datos de usuarios",
+        "Sistemas con contrasenas y permisos propios",
+        "Procesos que deben ejecutarse en un servidor",
+        "Aplicaciones SaaS o informacion confidencial"
+      ],
+      "scale": {
+        "label": "Paginas web estaticas",
+        "detail": "Adecuado para sitios estaticos. No es un servicio para operar aplicaciones con servidor y base de datos.",
+        "documented_limits": [
+          "Sitio publicado: maximo 1 GB.",
+          "Ancho de banda recomendado: limite flexible de 100 GB al mes.",
+          "Limite flexible de 10 publicaciones por hora, salvo flujos de GitHub Actions personalizados."
+        ]
+      },
+      "access_control": {
+        "status": "not_native",
+        "label": "Sitio publico",
+        "detail": "No ofrece inicio de sesion ni permisos de usuario para proteger una aplicacion. Un repositorio privado no convierte automaticamente el sitio publicado en privado."
+      },
+      "security": {
+        "status": "limited",
+        "label": "HTTPS para paginas publicas",
+        "detail": "Ofrece HTTPS y proteccion de la conexion. No proporciona por si solo proteccion de datos, login o permisos dentro de una aplicacion."
+      },
+      "backend_components": {
+        "database": {
+          "status": "not_native",
+          "label": "Base de datos externa",
+          "detail": "El sitio puede consumir una API externa, pero GitHub Pages no ejecuta el servidor que la gestiona."
+        },
+        "user_accounts": {
+          "status": "not_native",
+          "label": "Autenticacion externa",
+          "detail": "Se necesita otro servicio para gestionar usuarios y permisos."
+        },
+        "file_storage": {
+          "status": "not_native",
+          "label": "Archivos estaticos publicos",
+          "detail": "Puede publicar imagenes y archivos que forman parte del sitio, pero no ofrece almacenamiento dinamico para archivos que suben los usuarios."
+        },
+        "background_work": {
+          "status": "not_native",
+          "label": "Sin procesos de servidor",
+          "detail": "No ejecuta funciones de servidor ni tareas de fondo."
+        }
+      },
+      "activity_records": {
+        "status": "not_native",
+        "label": "Sin registros de uso de la aplicacion",
+        "detail": "Puede mostrar registros del proceso de publicacion, pero no registra por si solo acciones de los usuarios dentro de la pagina."
+      },
+      "code_and_portability": {
+        "status": "included",
+        "label": "Codigo en GitHub",
+        "detail": "El repositorio es la fuente del sitio y se puede clonar, descargar o trasladar."
+      },
+      "technology_flexibility": {
+        "label": "HTML, CSS y JavaScript",
+        "detail": "Puede publicar el resultado estatico de herramientas que generan archivos web. No ejecuta codigo de servidor."
+      },
+      "publishing": {
+        "label": "Publicacion desde una rama o GitHub Actions",
+        "detail": "Al actualizar la fuente de publicacion, GitHub genera una nueva version del sitio."
+      },
+      "pricing": {
+        "entry": "US$0 para repositorios publicos con GitHub Free.",
+        "model": "La publicacion desde repositorios privados requiere un plan compatible de GitHub. El sitio publicado sigue siendo publico en el uso habitual de Pages.",
+        "commercial_note": "No utilizar como alojamiento de un SaaS, comercio electronico o aplicacion empresarial transaccional."
+      },
+      "fit_tags": [
+        "pagina_estatica",
+        "landing",
+        "documentacion",
+        "portafolio",
+        "sin_backend",
+        "bajo_costo"
+      ],
+      "source_ids": [
+        "github_pages_about",
+        "github_pages_limits",
+        "github_pages_domains"
+      ]
+    },
+    {
+      "id": "render",
+      "name": "Render",
+      "short_name": "Render",
+      "category": "Aplicaciones y servicios",
+      "purpose": "Alojar aplicaciones, bases de datos y procesos que funcionan de forma continua.",
+      "default_address": "*.onrender.com",
+      "custom_domain": {
+        "status": "included",
+        "label": "Si",
+        "detail": "Permite conectar dominios propios y ofrece certificados TLS administrados."
+      },
+      "ideal_for": [
+        "Aplicaciones con servidor propio",
+        "Productos SaaS",
+        "Servicios privados",
+        "Procesos que se ejecutan en segundo plano",
+        "Aplicaciones con bases de datos administradas"
+      ],
+      "not_ideal_for": [
+        "Quien solo necesita publicar una pagina estatica y quiere la infraestructura mas simple",
+        "Produccion con instancias gratuitas"
+      ],
+      "scale": {
+        "label": "Aplicaciones y procesos continuos",
+        "detail": "Permite aumentar recursos manual o automaticamente. Tiene servicios web, servicios privados, trabajadores de fondo y tareas programadas.",
+        "documented_limits": [
+          "Las instancias gratuitas son para pruebas y no se recomiendan para produccion.",
+          "Las capacidades de escalado y operacion dependen del tipo de servicio y del plan."
+        ]
+      },
+      "access_control": {
+        "status": "configurable",
+        "label": "Servicios privados y permisos de la aplicacion",
+        "detail": "Permite crear servicios privados. El inicio de sesion, los roles y los permisos de los usuarios finales se configuran en la aplicacion o con un proveedor externo."
+      },
+      "security": {
+        "status": "included",
+        "label": "HTTPS, proteccion DDoS y servicios privados",
+        "detail": "Incluye certificados TLS, proteccion DDoS y opciones de red. Los controles de identidad y permisos de negocio requieren configuracion."
+      },
+      "backend_components": {
+        "database": {
+          "status": "configurable",
+          "label": "Base de datos administrada",
+          "detail": "Ofrece PostgreSQL administrado como servicio separado, con precio y recursos propios."
+        },
+        "user_accounts": {
+          "status": "external",
+          "label": "Autenticacion de la aplicacion",
+          "detail": "Se implementa en la aplicacion o se conecta con un proveedor de identidad."
+        },
+        "file_storage": {
+          "status": "configurable",
+          "label": "Discos persistentes o servicio externo",
+          "detail": "Puede utilizar discos persistentes; para almacenamiento de objetos y archivos de usuarios puede convenir un servicio especializado."
+        },
+        "background_work": {
+          "status": "included",
+          "label": "Trabajadores y tareas programadas",
+          "detail": "Ofrece Background Workers, Cron Jobs y otros servicios para procesos continuos."
+        }
+      },
+      "activity_records": {
+        "status": "included",
+        "label": "Logs y metricas del servicio",
+        "detail": "Permite consultar registros y metricas tecnicas. La auditoria de acciones de negocio debe construirse en la aplicacion."
+      },
+      "code_and_portability": {
+        "status": "included",
+        "label": "Codigo en repositorio propio",
+        "detail": "Se conecta a repositorios Git para construir y desplegar el servicio."
+      },
+      "technology_flexibility": {
+        "label": "Varios lenguajes y contenedores",
+        "detail": "Admite Node.js, Python, Go, Rust, Ruby, Elixir y contenedores Docker, entre otros flujos compatibles."
+      },
+      "publishing": {
+        "label": "Publicacion conectada al repositorio",
+        "detail": "Puede desplegar automaticamente al actualizar el repositorio y ofrece opciones de prueba y reversa."
+      },
+      "pricing": {
+        "entry": "Servicios gratuitos para pruebas. Servicios web de pago desde aproximadamente US$7/mes.",
+        "model": "Bases de datos, almacenamiento, transferencia y recursos adicionales pueden cobrarse por separado.",
+        "commercial_note": "No usar instancias gratuitas como base de una aplicacion de produccion."
+      },
+      "fit_tags": [
+        "saas",
+        "servidor",
+        "base_de_datos",
+        "procesos_fondo",
+        "api",
+        "servicios_privados",
+        "varios_lenguajes"
+      ],
+      "source_ids": [
+        "render_web_services",
+        "render_free",
+        "render_pricing",
+        "render_first_deploy"
+      ]
+    },
+    {
+      "id": "cloudflare",
+      "name": "Cloudflare",
+      "short_name": "Cloudflare",
+      "category": "Infraestructura global",
+      "purpose": "Publicar y ejecutar aplicaciones y servicios en una red global, con herramientas de rendimiento, datos y proteccion.",
+      "default_address": "*.workers.dev o *.pages.dev",
+      "custom_domain": {
+        "status": "included",
+        "label": "Si",
+        "detail": "Permite conectar dominios propios a Pages y Workers."
+      },
+      "ideal_for": [
+        "Aplicaciones con usuarios en distintos paises",
+        "Servicios y APIs de alto volumen",
+        "Aplicaciones que necesitan ejecutar procesos cerca de sus usuarios",
+        "Productos que requieren proteccion de red y control de acceso",
+        "Arquitecturas con varios tipos de almacenamiento"
+      ],
+      "not_ideal_for": [
+        "Personas que buscan el camino mas simple sin aprender a conectar componentes",
+        "Aplicaciones que dependen de un servidor tradicional sin adaptar su arquitectura"
+      ],
+      "scale": {
+        "label": "Red global y aplicaciones distribuidas",
+        "detail": "Workers ejecuta codigo en la red global de Cloudflare. La capacidad y el costo dependen del plan, las solicitudes y los servicios utilizados.",
+        "documented_limits": [
+          "Workers Free incluye hasta 100.000 solicitudes por dia.",
+          "Workers Paid tiene un minimo de US$5/mes e incluye una cuota de uso mensual.",
+          "Bases de datos y almacenamiento tienen limites y precios propios."
+        ]
+      },
+      "access_control": {
+        "status": "configurable",
+        "label": "Control de acceso con Cloudflare Access",
+        "detail": "Puede colocar una capa de acceso delante de aplicaciones propias y validar identidad, grupos y politicas. Los permisos dentro de la aplicacion pueden requerir su propia configuracion."
+      },
+      "security": {
+        "status": "included",
+        "label": "Proteccion de red y aplicaciones",
+        "detail": "Ofrece mitigacion DDoS, firewall, WAF y Cloudflare Access. La proteccion de la infraestructura no reemplaza los permisos y controles de datos de la aplicacion."
+      },
+      "backend_components": {
+        "database": {
+          "status": "included",
+          "label": "Bases de datos y conexiones",
+          "detail": "D1 es una base de datos SQL administrada; Hyperdrive permite conectar bases existentes como PostgreSQL o MySQL."
+        },
+        "user_accounts": {
+          "status": "configurable",
+          "label": "Control de acceso e identidad",
+          "detail": "Cloudflare Access puede proteger aplicaciones. La gestion de cuentas, perfiles y roles propios del producto puede requerir otro proveedor o codigo."
+        },
+        "file_storage": {
+          "status": "included",
+          "label": "Almacenamiento de archivos",
+          "detail": "R2 permite almacenar documentos, imagenes y otros archivos."
+        },
+        "background_work": {
+          "status": "included",
+          "label": "Procesos, colas y tareas",
+          "detail": "Workers, Queues y Cron Triggers permiten ejecutar procesos y tareas programadas."
+        }
+      },
+      "activity_records": {
+        "status": "included",
+        "label": "Registros y analitica tecnica",
+        "detail": "Dispone de registros y herramientas de observacion. La auditoria de acciones de negocio debe diseÃ±arse en la aplicacion."
+      },
+      "code_and_portability": {
+        "status": "included",
+        "label": "Codigo en repositorio propio",
+        "detail": "Puede conectar GitHub o GitLab y desplegar automaticamente al actualizar el codigo. El uso de servicios propios de Cloudflare puede requerir adaptaciones al migrar."
+      },
+      "technology_flexibility": {
+        "label": "Runtime especializado para aplicaciones web",
+        "detail": "Admite varios lenguajes y tecnologias compatibles con Workers. No equivale a un servidor tradicional sin limites."
+      },
+      "publishing": {
+        "label": "Despliegue desde GitHub o GitLab",
+        "detail": "Pages y Workers permiten conectar repositorios y automatizar despliegues. Pages ofrece versiones de prueba para ramas."
+      },
+      "pricing": {
+        "entry": "Workers Free: hasta 100.000 solicitudes al dia. Workers Paid: desde US$5/mes.",
+        "model": "El plan de pago incluye una cuota de uso; el consumo adicional se cobra segun solicitudes y recursos. D1, R2 y otros servicios tienen sus propias cuotas y precios.",
+        "commercial_note": "Revisar los limites y el consumo de cada producto. No interpretar el plan gratuito como capacidad ilimitada."
+      },
+      "fit_tags": [
+        "alto_trafico",
+        "global",
+        "api",
+        "seguridad",
+        "base_de_datos",
+        "archivos",
+        "procesos_fondo",
+        "aplicacion_distribuida"
+      ],
+      "source_ids": [
+        "cloudflare_workers_pricing",
+        "cloudflare_workers_limits",
+        "cloudflare_storage",
+        "cloudflare_access",
+        "cloudflare_git",
+        "cloudflare_custom_domains"
+      ]
+    }
+  ]
+}</script>
+<script id="official-sources" type="application/json">{
+  "openai_sites": {
+    "title": "Crear y usar ChatGPT Sites",
+    "url": "https://help.openai.com/en/articles/20001339-creating-and-using-chatgpt-sites"
+  },
+  "openai_sites_workspace": {
+    "title": "Administrar ChatGPT Sites para tu espacio de trabajo",
+    "url": "https://help.openai.com/es-419/articles/20001338-managing-chatgpt-sites-for-your-workspace"
+  },
+  "openai_sites_responsibilities": {
+    "title": "Entender tus responsabilidades para ChatGPT Sites",
+    "url": "https://help.openai.com/es-419/articles/20001337-understanding-responsibilities-for-your-chatgpt-sites"
+  },
+  "lovable_backend": {
+    "title": "Backend integrado",
+    "url": "https://docs.lovable.dev/features/cloud"
+  },
+  "lovable_github": {
+    "title": "Sincronizar un proyecto con GitHub",
+    "url": "https://docs.lovable.dev/integrations/github"
+  },
+  "lovable_domains": {
+    "title": "Dominios personalizados",
+    "url": "https://docs.lovable.dev/features/custom-domain"
+  },
+  "lovable_pricing": {
+    "title": "Planes y precios",
+    "url": "https://lovable.dev/pricing"
+  },
+  "vercel_pricing": {
+    "title": "Planes y precios",
+    "url": "https://vercel.com/pricing"
+  },
+  "vercel_deployment_protection": {
+    "title": "Proteccion de despliegues",
+    "url": "https://vercel.com/docs/deployment-protection"
+  },
+  "vercel_firewall": {
+    "title": "Firewall y proteccion",
+    "url": "https://vercel.com/docs/vercel-firewall"
+  },
+  "vercel_domains": {
+    "title": "Configurar un dominio propio",
+    "url": "https://vercel.com/docs/domains/set-up-custom-domain"
+  },
+  "vercel_plans": {
+    "title": "Planes de cuenta",
+    "url": "https://vercel.com/docs/plans"
+  },
+  "github_pages_about": {
+    "title": "Que es GitHub Pages",
+    "url": "https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages"
+  },
+  "github_pages_limits": {
+    "title": "Limites de GitHub Pages",
+    "url": "https://docs.github.com/en/pages/getting-started-with-github-pages/github-pages-limits"
+  },
+  "github_pages_domains": {
+    "title": "Dominios personalizados",
+    "url": "https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/about-custom-domains-and-github-pages"
+  },
+  "render_web_services": {
+    "title": "Servicios web",
+    "url": "https://render.com/docs/web-services"
+  },
+  "render_free": {
+    "title": "Desplegar gratis y limites",
+    "url": "https://render.com/docs/free"
+  },
+  "render_pricing": {
+    "title": "Precios",
+    "url": "https://render.com/pricing"
+  },
+  "render_first_deploy": {
+    "title": "Primer despliegue",
+    "url": "https://render.com/docs/your-first-deploy"
+  },
+  "cloudflare_workers_pricing": {
+    "title": "Precios de Workers",
+    "url": "https://developers.cloudflare.com/workers/platform/pricing/"
+  },
+  "cloudflare_workers_limits": {
+    "title": "Limites de Workers",
+    "url": "https://developers.cloudflare.com/workers/platform/limits/"
+  },
+  "cloudflare_storage": {
+    "title": "Productos de datos y almacenamiento",
+    "url": "https://developers.cloudflare.com/workers/platform/storage-options/"
+  },
+  "cloudflare_access": {
+    "title": "Cloudflare Access y tipos de aplicaciones",
+    "url": "https://developers.cloudflare.com/cloudflare-one/access-controls/applications/choose-application-type/"
+  },
+  "cloudflare_git": {
+    "title": "Integracion Git de Pages",
+    "url": "https://developers.cloudflare.com/pages/configuration/git-integration/"
+  },
+  "cloudflare_custom_domains": {
+    "title": "Dominios personalizados de Pages",
+    "url": "https://developers.cloudflare.com/pages/configuration/custom-domains/"
+  }
+}</script>
+<script>
+'use strict';
+const DATA=JSON.parse(document.getElementById('platform-data').textContent),SOURCES=JSON.parse(document.getElementById('official-sources').textContent);
+const $=s=>document.querySelector(s),esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])),norm=s=>s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
+const platforms=DATA.platforms,ids=platforms.map(p=>p.id),byId=id=>platforms.find(p=>p.id===id),legend=DATA.status_legend;
+const rows=[['Dominio propio','custom_domain',['conditional','conditional','included','included','included','included']],['Guardar información','database',['included','included','external','not_native','configurable','included']],['Usuarios y contraseñas','user_accounts',['limited','included','external','not_native','external','configurable']],['Guardar documentos','file_storage',['included','included','configurable','not_native','configurable','included']],['Procesos automáticos','background_work',['limited','included','configurable','not_native','included','included']],['Acceso privado','access_control',['included','conditional','configurable','not_native','configurable','configurable']],['Seguridad de infraestructura','security',['limited','conditional','included','limited','included','included']],['Registro de actividad','activity_records',['limited','included','included','not_native','included','included']],['Auditoría de negocio','audit',['limited','conditional','conditional','not_native','external','external']],['Código portable','code_and_portability',['configurable','included','included','included','included','included']],['Libertad tecnológica','technology_flexibility',['limited','limited','included','limited','included','limited']]];
+const sourceMap={custom_domain:/domain/,database:/backend|storage|web_services|sites$/,user_accounts:/backend|access|deployment_protection|sites_workspace/,file_storage:/backend|storage|web_services|sites$/,background_work:/backend|workers_limits|web_services|sites$/,access_control:/access|deployment_protection|pricing|sites_workspace/,security:/firewall|access|pricing|sites_responsibilities/,activity_records:/backend|web_services|workers|sites_responsibilities/,audit:/pricing|access|web_services|sites_workspace/,code_and_portability:/github|git$|first_deploy|about|sites$/,technology_flexibility:/workers_limits|web_services|plans|backend|about|sites$/};
+const status=(p,key)=>rows.find(r=>r[1]===key)[2][ids.indexOf(p.id)];
+const obj=(p,key)=>p.backend_components[key]||p[key]||null;
+const badge=s=>`<span class="status ${s}">${esc(legend[s].label)}</span>`;
+const groupColors=['#43e2df','#bba8ed','#efc47b','#777b8c'];
+const groupNames=['Incluido','Configurable','Servicio externo','Con límites o no disponible'];
+const logo=p=>{const i=ids.indexOf(p.id);const shapes=['<path d="m12 2 9 5v10l-9 5-9-5V7Z M3 7l9 5 9-5M12 12v10M8 4l9 5v7"/>','<path d="M12 21 3.5 12.5C-2 6 6 0 12 6c6-6 14 0 8.5 6.5Z" fill="currentColor" stroke="none"/>','<path d="M12 3 23 22H1Z" fill="currentColor" stroke="none"/>','<path d="M8 21v-4c-5 1-5-2-7-3m15 7v-4c0-2-1-3-1-3 6-1 8-5 5-9l-1-3-4 2a15 15 0 0 0-6 0L5 2 4 5c-3 5 0 8 5 9 0 0-1 1-1 3"/>','<path d="M3 3h12a7 7 0 0 1 0 14h-5v5H3Z" fill="currentColor" stroke="none"/><path d="M3 17h7v5H3Z" fill="#17171b" stroke="none"/>','<path d="M3 18h17a3 3 0 0 0 0-6 6 6 0 0 0-12-2 4 4 0 0 0-5 8Z" fill="currentColor" stroke="none"/>'];return `<span class="logo ${['sites','lovable','vercel','github','render','cloudflare'][i]}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">${shapes[i]}</svg></span>`};
+const buildMap={page:['github_pages','cloudflare','vercel'],light:['chatgpt_sites','lovable','vercel','cloudflare'],internal:['chatgpt_sites','lovable','vercel','render','cloudflare'],data:['lovable','vercel','render','cloudflare'],saas:['lovable','vercel','render','cloudflare'],global:['vercel','cloudflare']};
+const costMap={free:['lovable','vercel','github_pages','render','cloudflare'],subscription:['chatgpt_sites','lovable','vercel','render','cloudflare'],usage:['chatgpt_sites','lovable','vercel','render','cloudflare'],enterprise:['chatgpt_sites','lovable','vercel']};
+const adminMap={minimal:['chatgpt_sites','lovable','github_pages'],some:['vercel','render','cloudflare'],control:['vercel','render']};
+const needs=[['custom_domain','Usar dominio propio'],['user_accounts','Permitir inicio de sesión'],['database','Guardar información'],['file_storage','Recibir y guardar archivos'],['activity_records','Registrar actividad'],['access_control','Restringir el acceso'],['services','Conectar servicios externos'],['technology_flexibility','Elegir tecnología con libertad']];
+let state={view:'explore',selected:[],chartGroup:null,step:0,answers:[null,null,null],sensitive:false};
+$('#needs').innerHTML=needs.map(([k,t])=>`<label class="check"><input type="checkbox" value="${k}">${t}</label>`).join('');
+const filtered=()=>{const q=norm($('#search').value.trim()),need=[...document.querySelectorAll('#needs input:checked')].map(e=>e.value);return platforms.filter(p=>(!q||norm([p.name,p.purpose,p.category,...p.ideal_for,...p.fit_tags].join(' ')).includes(q))&&(!$('#build').value||buildMap[$('#build').value].includes(p.id))&&(!$('#cost').value||costMap[$('#cost').value].includes(p.id))&&(!$('#admin').value||adminMap[$('#admin').value].includes(p.id))&&need.every(k=>k==='services'?p.id!=='github_pages':k==='technology_flexibility'?status(p,k)==='included':status(p,k)!=='not_native'))};
+function refs(p,key){let keys=p.source_ids.filter(id=>!key||sourceMap[key]?.test(id));if(!keys.length)keys=p.source_ids;return keys.filter(id=>SOURCES[id]).map(id=>`<a href="${esc(SOURCES[id].url)}" target="_blank" rel="noopener noreferrer">${esc(SOURCES[id].title)}</a>`).join('')}
+function toast(t){$('#toast').textContent=t;$('#toast').hidden=false;clearTimeout(toast.timer);toast.timer=setTimeout(()=>$('#toast').hidden=true,3600)}
+function toggle(id){const i=state.selected.indexOf(id);if(i>=0)state.selected.splice(i,1);else if(state.selected.length<3)state.selected.push(id);else {toast('Puedes comparar hasta tres plataformas. Quita una para añadir otra.');return}render()}
+function card(p){return `<article class="card ${state.selected.includes(p.id)?'selected':''}" data-platform="${p.id}"><div class="card-head">${logo(p)}<div><h3>${esc(p.name)}</h3><span class="category">${esc(p.category)}</span></div></div><p>${esc(p.purpose)}</p><div class="tags">${p.ideal_for.slice(0,2).map(t=>`<span class="tag">${esc(t)}</span>`).join('')}</div><div class="card-data"><div class="data-row"><span>Guardar información</span>${badge(status(p,'database'))}</div><div class="data-row"><span>Acceso privado</span>${badge(status(p,'access_control'))}</div><div class="data-row"><span>Código portable</span>${badge(status(p,'code_and_portability'))}</div></div><div class="card-actions"><button class="quiet" data-detail="${p.id}">Ver detalles</button><button class="select" data-select="${p.id}" aria-pressed="${state.selected.includes(p.id)}" aria-label="${state.selected.includes(p.id)?'Quitar':'Comparar'} ${esc(p.name)}">${state.selected.includes(p.id)?'Seleccionada':'＋ Comparar'}</button></div></article>`}
+function empty(){return '<div class="empty"><h3>No hay coincidencias</h3><p>Prueba con menos requisitos o cambia tu búsqueda.</p><button data-clear>Limpiar filtros</button></div>'}
+function explore(list){return `${list.length?`<div class="grid">${list.map(card).join('')}</div>`:empty()}<div class="helper-banner"><div><h3>Empieza por lo que necesitas, no por la tecnología.</h3><p>Responde tres preguntas y descubre qué opciones conviene explorar.</p></div><button data-view="wizard">Encontrar mi plataforma</button></div><p class="caption" style="margin-top:17px">«Incluido» no significa gratuito ni ilimitado. Los estados describen capacidades; no son calificaciones de calidad.</p>`}
+function barCounts(p){let counts=[0,0,0,0];Object.values(p.backend_components).forEach(c=>counts[{included:0,configurable:1,external:2}[c.status]??3]++);return counts}
+function matrix(list,detailed=false){return `<div class="table-wrap"><table><caption class="visually-hidden">${detailed?'Comparación detallada de plataformas seleccionadas':'Mapa de capacidades de las plataformas filtradas'}</caption><thead><tr><th scope="col">Capacidad</th>${list.map(p=>`<th scope="col"><button class="bar-name" data-detail="${p.id}">${esc(p.name)}</button></th>`).join('')}</tr></thead><tbody>${rows.map(([name,key])=>`<tr><th scope="row">${name}</th>${list.map(p=>`<td><button class="cell" data-cell="${p.id}:${key}" aria-label="${esc(name)} en ${esc(p.name)}: ${esc(legend[status(p,key)].label)}">${badge(status(p,key))}</button>${detailed?`<div class="table-detail">${esc(obj(p,key)?.label||'Verificar con el proveedor')}</div>`:''}</td>`).join('')}</tr>`).join('')}${detailed?['purpose','scale','pricing','technology_flexibility','publishing'].map((key,i)=>`<tr><th scope="row">${['Propósito','Crecimiento y límites','Precio de entrada','Tecnología','Publicar una versión'][i]}</th>${list.map(p=>`<td><div>${esc(typeof p[key]==='string'?p[key]:p[key].entry||p[key].label)}</div><div class="table-detail">${esc(p[key].detail||p[key].model||'')}</div></td>`).join('')}</tr>`).join(''):''}</tbody></table></div>`}
+const growths=[['Páginas estáticas',['github_pages','cloudflare','vercel'],'Para páginas sin servidor propio. Revisa las restricciones del uso comercial.'],['Aplicaciones ligeras',['chatgpt_sites','lovable','vercel','cloudflare'],'El entorno compatible, las cuotas y los servicios conectados condicionan el alcance.'],['Aplicaciones con datos y usuarios',['lovable','vercel','render','cloudflare'],'La integración y la gestión de usuarios requieren decisiones distintas en cada plataforma.'],['Productos SaaS',['lovable','vercel','render','cloudflare'],'Revisa arquitectura, permisos, consumo y plan antes de operar con clientes.'],['Servicios de alto tráfico',['vercel','cloudflare'],'El resultado depende del diseño, las cuotas y el presupuesto.'],['Aplicaciones distribuidas globalmente',['cloudflare','vercel'],'La red global no elimina los límites de ejecución, datos ni recursos.']];
+function compare(list){const chosen=list.filter(p=>state.selected.includes(p.id));return `<p class="section-desc">Selecciona hasta tres plataformas para profundizar. Los gráficos y la matriz siguen los filtros de la izquierda.</p><div class="selection-box">${platforms.map(p=>`<button data-select="${p.id}" class="${state.selected.includes(p.id)?'active':''}" aria-pressed="${state.selected.includes(p.id)}">${esc(p.name)}${state.selected.includes(p.id)?' ×':''}</button>`).join('')}</div>${state.selected.some(id=>!list.some(p=>p.id===id))?'<p class="caption">Parte de tu selección queda fuera de los filtros. Se conserva y reaparecerá al ampliar la búsqueda.</p>':''}${chosen.length?`<section class="panel"><div class="panel-header"><div><h3>Tu comparación · ${chosen.length} de 3</h3><p class="caption">Selecciona una capacidad para ver sus condiciones y fuentes.</p></div><button class="export" id="export">Descargar comparación</button></div>${matrix(chosen,true)}</section>`:'<p class="caption">Añade plataformas para ver aquí una comparación detallada.</p>'}${!list.length?empty():`<section class="panel"><div class="panel-header"><div><h3>¿Qué viene integrado y qué hay que conectar?</h3><p class="caption">Cuatro piezas: información, usuarios, archivos y procesos automáticos.</p></div><span class="count">4 capacidades</span></div><div class="legend">${groupNames.map((g,i)=>`<span><i class="swatch" style="background:${groupColors[i]}"></i>${g}</span>`).join('')}</div>${list.map(p=>`<div class="bar-row"><button class="bar-name" data-detail="${p.id}">${esc(p.short_name)}</button><div class="bar" aria-label="${esc(p.name)}: ${barCounts(p).map((v,i)=>`${v} ${groupNames[i]}`).join(', ')}">${barCounts(p).map((n,i)=>n?`<button class="segment" style="width:${n*25}%;background:${groupColors[i]}" data-bar="${p.id}:${i}" aria-label="${esc(p.name)}: ${n} de 4, ${groupNames[i]}">${n}</button>`:'').join('')}</div><span class="mono muted tiny">4</span></div>`).join('')}<p class="caption">Cuenta piezas integradas, no calidad ni rendimiento. Selecciona un segmento para ver las capacidades.</p></section><section class="panel"><h3>Mapa de capacidades</h3><p class="section-desc">Cada celda abre una explicación y la documentación oficial.</p><div class="legend">${Object.keys(legend).map(s=>badge(s)).join('')}</div>${matrix(list)}<p class="caption" style="margin-top:16px">La matriz distingue registros técnicos de auditoría de negocio, tal como establece la especificación.</p></section><section class="panel"><h3>Perfiles de crecimiento</h3><p class="section-desc">Usos orientativos. Estas categorías no son niveles absolutos de capacidad.</p><div class="growth-grid">${growths.map(([name,pids,note])=>{const members=list.filter(p=>pids.includes(p.id));return `<article class="growth"><h3>${name}</h3>${members.length?members.map(p=>`<button data-detail="${p.id}">${esc(p.name)}</button>`).join(''):'<span class="caption">Sin opciones con los filtros actuales.</span>'}<p>${note}</p></article>`}).join('')}</div></section><section class="panel"><h3>Modelo de costos</h3><p class="section-desc">Precios en USD del documento, al 18 de noviembre de 2026. Modelos de cobro distintos; no constituyen un ranking.</p>${prices(list)}</section>`}`}
+function prices(list){return `<div class="price-grid">${list.map(p=>`<article class="price-card"><h3>${esc(p.name)}</h3><p>${esc(p.pricing.entry)}</p><dl><dt>Qué incluye y qué puede generar cargos</dt><dd>${esc(p.pricing.model)}</dd><dt>Restricciones y revisión del plan</dt><dd>${esc(p.pricing.commercial_note)}</dd><dt>Plan gratuito</dt><dd>${esc(p.scale.documented_limits.filter(t=>/gratuit|Free|Hobby/i.test(t)).join(' ')||(p.id==='github_pages'?p.pricing.entry+' '+p.pricing.model:'Verificar con el proveedor'))}</dd>${p.pricing.enterprise_note?`<dt>Enterprise</dt><dd>${esc(p.pricing.enterprise_note)}</dd>`:''}</dl><div class="source-links">${p.source_ids.some(id=>/pricing/.test(id))?refsByIds(p.source_ids.filter(id=>/pricing/.test(id))):refs(p)}${!p.source_ids.some(id=>/pricing/.test(id))?'<span class="caption">Precio del plan: verificar con el proveedor.</span>':''}</div></article>`).join('')}</div>`}
+function refsByIds(keys){return keys.filter(id=>SOURCES[id]).map(id=>`<a href="${esc(SOURCES[id].url)}" target="_blank" rel="noopener noreferrer">${esc(SOURCES[id].title)}</a>`).join('')}
+const cautions=['Escala no es una nota: el resultado depende del diseño, los servicios conectados y el presupuesto.','Seguridad no es una garantía: disponer de firewall, inicio de sesión o permisos no asegura una aplicación por defecto.','Dominio propio no significa privacidad: una dirección como app.empresa.com no restringe quién puede entrar.','Repositorio privado no significa sitio privado: GitHub Pages suele publicar sitios accesibles desde internet.','Propiedad del código no equivale a portabilidad completa: datos, archivos, claves y configuración requieren un tratamiento separado.','Los precios no son directamente comparables: pueden combinar suscripción, usuarios, consumo y recursos.'];
+function sourcesView(list){return `<p class="section-desc">Datos proporcionados por el usuario · versión ${esc(DATA.metadata.version)} · verificación documental: 18 de noviembre de 2026. No se realiza una consulta de precios en tiempo real.</p><div class="warning">Base educativa. No reemplaza una evaluación técnica, contractual, legal o de seguridad. Antes de usar información real de una organización, revisa el plan, los controles, la residencia de datos, los permisos, las copias de seguridad y las políticas internas.</div><section class="panel"><h3>Cómo interpretar la comparación</h3><p class="caption" style="margin-top:8px">${esc(DATA.metadata.methodology)}</p>${cautions.map((t,i)=>`<details><summary>${esc(t.split(':')[0])}</summary><p>${esc(t)}</p></details>`).join('')}<details><summary>Estados y criterios de los gráficos</summary>${Object.entries(legend).map(([k,v])=>`<p>${badge(k)} — ${esc(v.description)}</p>`).join('')}<p>Las barras cuentan cuatro capacidades del bloque de datos original. La matriz reproduce los once estados de la tabla de la especificación. En auditoría, cuando falta un detalle específico, se indica «Verificar con el proveedor».</p></details><details><summary>Alcance de filtros y recomendaciones</summary><p>Las asociaciones por tipo de proyecto y nivel de gestión son orientativas y siguen los usos descritos. Se incluyen capacidades configurables o dependientes del plan. Para mayor libertad tecnológica se exige el estado «Incluido». Los filtros de costo usan solo modelos documentados; un plan empresarial no documentado no se presupone.</p><p>El asistente usa sus tres respuestas y no los filtros de exploración. Nunca recomienda automáticamente si se indican datos sensibles o requisitos empresariales de seguridad y auditoría.</p></details></section>${!list.length?empty():`<section class="panel"><h3>Planes, costos y restricciones</h3><p class="section-desc">Consulta los importes vigentes con cada proveedor antes de contratar.</p>${prices(list)}</section><section class="panel"><h3>Documentación oficial</h3>${list.map(p=>`<details><summary>${esc(p.name)}</summary><p>${esc(p.scale.detail)}</p><ul>${p.scale.documented_limits.map(t=>`<li>${esc(t)}</li>`).join('')}</ul><div class="source-links">${refs(p)}</div></details>`).join('')}</section>`}`}
+const questions=[['¿Qué quieres publicar?',['Una página o herramienta sencilla','Una aplicación para uso interno','Un producto digital para clientes','Un servicio para usuarios en muchos países']],['¿Necesita guardar información y gestionar usuarios?',['No','Sí, de forma sencilla','Sí, con permisos y datos separados por usuario','Sí, con requisitos empresariales de seguridad y auditoría']],['¿Qué prefieres?',['Tener todo integrado','Elegir y conectar servicios','Tener el mayor control posible']]];
+const safety='Antes de publicar, valida el plan, el tratamiento de datos, la ubicacion, los permisos, la autenticacion, los registros y las politicas de TI de tu organizacion';
+function recommend(){const [use,data,pref]=state.answers;if(state.sensitive||data===3)return {blocked:true};if(use===3)return {primary:'cloudflare',alt:['vercel'],why:'Su red global y sus servicios de ejecución distribuidos responden al alcance internacional que buscas. Revisa cuotas, duración de las tareas y costos de cada servicio.'};if(use===0&&data===0)return {primary:'github_pages',alt:['cloudflare','vercel','chatgpt_sites'],why:'Para una página pública sin gestión de usuarios ni datos, GitHub Pages permite publicar contenido estático. Si es una herramienta interactiva creada desde ChatGPT, explora ChatGPT Sites. Revisa las restricciones de uso de Pages.'};if(pref===2)return {primary:'render',alt:['vercel'],why:'Render permite operar servicios, procesos continuos y bases de datos administradas. Responde a tu preferencia por mayor control, con servicios y costos que debes configurar.'};if(pref===1)return {primary:'vercel',alt:['render','cloudflare'],why:'Vercel facilita publicar y revisar versiones mientras eliges los servicios de datos y usuarios por separado. El acceso privado y los permisos necesitan configuración.'};if(use===0&&data===1)return {primary:'chatgpt_sites',alt:['lovable'],why:'ChatGPT Sites permite crear y compartir herramientas ligeras desde ChatGPT, con datos y archivos dentro de su entorno compatible. Revisa límites y las funciones de acceso disponibles.'};return {primary:'lovable',alt:use===1?['chatgpt_sites','vercel','render']:['vercel','render'],why:use===1?'Lovable integra datos, usuarios y archivos para aplicaciones internas. Para restringir la publicación al espacio de trabajo, revisa Business o Enterprise. Sites es una alternativa en espacios compatibles.':'Lovable integra datos, usuarios y archivos para una aplicación orientada a clientes. Revisa permisos por usuario, créditos y consumo antes de operar con datos reales.'}}
+function wizard(){if(state.step===3){const r=recommend();return `<div class="wizard"><div class="eyebrow">Orientación inicial</div><h2>${r.blocked?'Tu proyecto necesita una revisión previa.':'Estas opciones merecen una mirada.'}</h2><p class="caption">Resultado basado en tus respuestas. Los filtros de exploración no modifican esta orientación.</p>${r.blocked?`<div class="warning">${safety}</div><p class="muted">No se emite una recomendación automática para información sensible o requisitos empresariales de seguridad y auditoría.</p><button style="margin-top:24px" data-view="compare">Revisar capacidades y condiciones</button>`:`<article class="result-card"><div class="card-head">${logo(byId(r.primary))}<h3>${esc(byId(r.primary).name)}</h3></div><p>${esc(r.why)}</p><button class="primary" data-detail="${r.primary}">Revisar esta plataforma</button></article><div class="result-alt"><h3>Alternativas que conviene explorar</h3><div class="selection-box">${r.alt.map(id=>`<button data-detail="${id}">${esc(byId(id).name)}</button>`).join('')}</div></div><p class="caption">La plataforma por sí sola no garantiza seguridad ni preparación para producción. Revisa arquitectura, plan y permisos.</p>`}<div class="wizard-footer"><button data-back>Volver a mis respuestas</button><button data-restart>Empezar de nuevo</button></div></div>`}const [title,opts]=questions[state.step];return `<div class="wizard"><div class="eyebrow">Encontrar mi plataforma · ${state.step+1} de 3</div><div class="steps" aria-hidden="true">${[0,1,2].map(i=>`<span class="${i<=state.step?'done':''}"></span>`).join('')}</div><h2>${title}</h2><div class="options">${opts.map((t,i)=>`<button class="option" data-answer="${i}" aria-pressed="${state.answers[state.step]===i}">${t}</button>`).join('')}</div>${state.step===1?`<label class="check"><input id="sensitive" type="checkbox" ${state.sensitive?'checked':''}>Mi proyecto maneja información confidencial, financiera, personal o regulada.</label>`:''}<div class="wizard-footer"><button data-back ${state.step===0?'disabled':''}>Anterior</button><button class="primary" data-next ${state.answers[state.step]===null?'disabled':''}>${state.step===2?'Ver orientación':'Continuar'}</button></div><p class="caption" style="margin-top:24px">Una guía inicial, no una evaluación técnica ni una garantía de seguridad.</p></div>`}
+function render(){const list=filtered();$('#view-title').textContent={explore:'Explora las plataformas',compare:'Compara con contexto',wizard:'Encuentra tu punto de partida',sources:'Fuentes y límites'}[state.view];$('#result-count').textContent=`${list.length} de 6`;$('#view').innerHTML=({explore:explore,compare:compare,wizard:wizard,sources:sourcesView})[state.view](list);document.querySelectorAll('.nav button').forEach(b=>{if(b.dataset.view===state.view)b.setAttribute('aria-current','page');else b.removeAttribute('aria-current')});$('#dock').hidden=!state.selected.length||state.view==='wizard';$('#selected-count').textContent=`${state.selected.length}/3`;$('#dock-list').innerHTML=state.selected.map(id=>`<button data-select="${id}" aria-label="Quitar ${esc(byId(id).name)}">${esc(byId(id).short_name)} ×</button>`).join('');$('#compare-go').textContent=`Comparar (${state.selected.length}/3)`}
+function setView(v){state.view=v;render();$('#view-title').scrollIntoView({block:'start',behavior:'instant'})}
+function clear(){['search','build','cost','admin'].forEach(id=>$('#'+id).value='');document.querySelectorAll('#needs input').forEach(e=>e.checked=false);render()}
+function openModal(title,html){$('#dialog-title').textContent=title;$('#dialog-body').innerHTML=html;$('#detail').showModal()}
+function showDetail(id){const p=byId(id);openModal(p.name,`<div class="card-head">${logo(p)}<span class="eyebrow">${esc(p.category)}</span></div><p>${esc(p.purpose)}</p><h3>Cuándo conviene explorarla</h3><ul>${p.ideal_for.map(t=>`<li>${esc(t)}</li>`).join('')}</ul><h3>Cuándo revisar otras opciones</h3><ul>${p.not_ideal_for.map(t=>`<li>${esc(t)}</li>`).join('')}</ul><h3>Dirección y publicación</h3><p>${esc(p.default_address)}</p><p>${esc(p.publishing.detail)}</p><h3>${esc(p.scale.label)}</h3><p>${esc(p.scale.detail)}</p><ul>${p.scale.documented_limits.map(t=>`<li>${esc(t)}</li>`).join('')}</ul>${['custom_domain','access_control','security','database','user_accounts','file_storage','background_work','activity_records','code_and_portability','technology_flexibility'].map(k=>{const o=obj(p,k);return `<h3>${rows.find(r=>r[1]===k)[0]}</h3>${badge(status(p,k))}<p>${esc(o.label)}. ${esc(o.detail)}</p>${o.caution?`<div class="warning">${esc(o.caution)}</div>`:''}${o.application_login_note?`<p>${esc(o.application_login_note)}</p>`:''}`}).join('')}<h3>Precio y modelo de cobro</h3><p>${esc(p.pricing.entry)}</p><p>${esc(p.pricing.model)}</p><div class="warning">${esc(p.pricing.commercial_note)}</div>${p.pricing.enterprise_note?`<p>${esc(p.pricing.enterprise_note)}</p>`:''}<h3>Fuentes oficiales</h3><div class="source-links">${refs(p)}</div>`)}
+function showCell(id,key){const p=byId(id),r=rows.find(r=>r[1]===key),o=obj(p,key);let text=o?.detail||'Verificar con el proveedor';if(key==='audit')text='Verificar con el proveedor. La especificación separa auditoría de negocio de registros técnicos. '+p.activity_records.detail;if(key==='activity_records'&&id==='lovable')text='La matriz indica registros técnicos incluidos; la auditoría organizacional depende del plan. '+text;openModal(`${r[0]} · ${p.name}`,`${badge(status(p,key))}<h3>${esc(o?.label||r[0])}</h3><p>${esc(text)}</p>${o?.caution?`<div class="warning">${esc(o.caution)}</div>`:''}${o?.application_login_note?`<p>${esc(o.application_login_note)}</p>`:''}<p class="caption" style="margin-top:20px">${esc(legend[status(p,key)].description)} Incluido no implica gratuito ni ilimitado.</p><h3>Fuentes para verificar</h3><div class="source-links">${refs(p,key)}</div>`)}
+document.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;const d=b.dataset;if(d.view){setView(d.view)}else if(d.select){toggle(d.select)}else if(d.detail){showDetail(d.detail)}else if(d.cell){showCell(...d.cell.split(':'))}else if(d.bar){const [id,gi]=d.bar.split(':'),p=byId(id);const members=Object.entries(p.backend_components).filter(([,c])=>({included:0,configurable:1,external:2}[c.status]??3)===+gi);openModal(`${p.name} · ${groupNames[+gi]}`,members.map(([key,c])=>`<h3>${rows.find(r=>r[1]===key)[0]}</h3>${badge(c.status)}<p>${esc(c.detail)}</p>`).join('')+`<h3>Fuentes oficiales</h3><div class="source-links">${refs(p)}</div>`)}else if(d.answer!==undefined){state.answers[state.step]=+d.answer;render()}else if(d.next!==undefined){state.step++;render()}else if(d.back!==undefined){state.step--;render()}else if(d.restart!==undefined){state.step=0;state.answers=[null,null,null];state.sensitive=false;render()}else if(d.clear!==undefined||b.id==='clear'){clear()}else if(b.id==='close-filters'){$('#filters').classList.remove('open');$('#filter-toggle').setAttribute('aria-expanded','false');$('#filter-toggle').focus()}else if(b.id==='close-dialog'){$('#detail').close()}else if(b.id==='filter-toggle'){const on=$('#filters').classList.toggle('open');b.setAttribute('aria-expanded',on);if(on)$('#filters').scrollIntoView({behavior:'instant'})}else if(b.id==='export'){const chosen=filtered().filter(p=>state.selected.includes(p.id));const lines=[['Capacidad',...chosen.map(p=>p.name)],...rows.map(([name,key])=>[name,...chosen.map(p=>legend[status(p,key)].label)]),['Verificado','2026-11-18'],['Metodología',DATA.metadata.methodology]];const csv='\ufeff'+lines.map(row=>row.map(v=>'"'+String(v).replace(/"/g,'""')+'"').join(';')).join('\r\n');const url=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8'}));const a=document.createElement('a');a.href=url;a.download='deployment-explorer-comparacion.csv';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)}});
+$('#search').addEventListener('input',render);['build','cost','admin','needs'].forEach(id=>$('#'+id).addEventListener('change',render));document.addEventListener('change',e=>{if(e.target.id==='sensitive')state.sensitive=e.target.checked});$('#detail').addEventListener('click',e=>{if(e.target===$('#detail')&&e.clientX){const r=$('#detail').getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)$('#detail').close()}});
+function orb(){let s='<defs><radialGradient id="glow"><stop stop-color="#43e2df" stop-opacity=".18"/><stop offset="1" stop-color="#43e2df" stop-opacity="0"/></radialGradient></defs><circle cx="115" cy="102" r="100" fill="url(#glow)"/>';for(let i=0;i<240;i++){const a=i*2.39996323,z=1-2*(i+.5)/240,r=Math.sqrt(1-z*z),x=r*Math.cos(a),y=r*Math.sin(a),rx=x*.83+z*.55,rz=-x*.55+z*.83,px=115+rx*82,py=102+y*82;s+=`<path d="M80 118L${px.toFixed(2)} ${py.toFixed(2)}" stroke="#43e2df" stroke-width=".4" opacity="${.04+(rz+1)*.035}"/><circle cx="${px.toFixed(2)}" cy="${py.toFixed(2)}" r="${.55+(rz+1)*.5}" fill="${i%3===0?'#43e2df':'#d2edee'}" opacity="${.3+(rz+1)*.3}"/>`}s+='<circle cx="80" cy="118" r="3" fill="#9dffff"/>';$('#orb').innerHTML=s}orb();render();
+</script>
+</body></html>
